@@ -11,7 +11,7 @@ int main(int arc, char** args)
         // condition to check of more than 2 arguments are passed
         if (arc>3)
         {
-                printf("Invalid input! More than two arguments!");
+                printf("Invalid input! More than two arguments!\n");
         }
         else
         {
@@ -34,7 +34,6 @@ int main(int arc, char** args)
                         close(fd[0]);
                         int fd1=open(args[1],O_RDONLY);
                         int n= read(fd1,buffer,1000); // reading data from pipe
-                        printf("file opened and read \nfile name : %s",args[1]); 
                         write(fd[1],buffer,n); // writing to the file
                         close(fd[1]);
                         wait(NULL);
@@ -46,7 +45,7 @@ int main(int arc, char** args)
                         int n=read(fd[0],buffer2,1000); // reading data from file
                         close(fd[0]);
                         int fd2=open(args[2],O_CREAT|O_RDWR,0777);
-                        printf("file opened and written \n file name : %s",args[2]);
+                        printf("file successfully copied!\n");
                         write(fd2,buffer2,n); // writing it to the pipe
                 }
         }
